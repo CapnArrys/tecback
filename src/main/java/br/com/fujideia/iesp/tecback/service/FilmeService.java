@@ -1,7 +1,5 @@
 package br.com.fujideia.iesp.tecback.service;
 
-
-
 import br.com.fujideia.iesp.tecback.model.Filme;
 import br.com.fujideia.iesp.tecback.repository.FilmeRepository;
 import lombok.AllArgsConstructor;
@@ -9,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
+
+@AllArgsConstructor // Ja faz os construtores automaticamente
 @Service
 public class FilmeService {
-
     private FilmeRepository repository;
 
     public Filme salvar(Filme filme){
@@ -23,8 +21,8 @@ public class FilmeService {
         return repository.findAll();
     }
 
-    public Filme atualizar(Filme filme){
-        if(filme.getId()==null){
+    public Filme atualizar(Integer id, Filme filme){
+        if (filme.getId()==null){
             throw new RuntimeException("Filme sem ID");
         }
         return repository.save(filme);
@@ -37,5 +35,4 @@ public class FilmeService {
     public void excluir(Integer id){
         repository.deleteById(id);
     }
-
 }
